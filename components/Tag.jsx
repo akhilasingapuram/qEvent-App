@@ -1,10 +1,20 @@
-const Tag = (props) => {
-  const { text } = props;
-  ``;
+"use client";
+import { useRouter } from "next/navigation";
+
+const Tag = ({ tag }) => {
+  const router = useRouter();
+  console.log("Tag", tag);
+
+  const handleClick = () => {
+    router.push(`/events?tag=${encodeURIComponent(tag)}`);
+  };
   return (
-    <div className="bg-gradient-to-r from-orange-400 to-teal-600 text-white rounded-2xl w-fit px-3 py-1 text-center font-bold hover:scale-110 hover:cursor-pointer">
-      # {text}
-    </div>
+    <button
+      onClick={handleClick}
+      className="bg-orange-300 px-3 py-1 rounded-full text-white hover:bg-orange-400"
+    >
+      {tag}
+    </button>
   );
 };
 
