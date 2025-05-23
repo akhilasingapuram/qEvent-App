@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="light">
             <Header />
-            {children}
+            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
           </ThemeProvider>
         </body>
       </html>
